@@ -14,7 +14,7 @@ composer require "yaf/extras:*"
 
 ### Class: RestfulRoute
 
-Basic Route Class, 
+Base Route Class, it is recommended to use `RestfulRegister` instead of this.
 
 
 ##### new RestfulRoute($url, $options)
