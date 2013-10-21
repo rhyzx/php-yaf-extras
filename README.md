@@ -14,6 +14,15 @@ composer require "yaf/extras:*"
 
 ### Class: RestfulRoute
 
+Basic Route Class, 
+
+
+##### new RestfulRoute($url, $options)
+- $url **String**
+- $options **Array**
+
+The same as `\Yaf\Route\Rewrite` expect `method` option for **HTTP method** filter.
+
 
 ##### Example
 ```php
@@ -36,14 +45,14 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
 ### Class: RestfulRegister
 
-Convience API Wrapper for `RestfulRoute`
+Convience API Wrapper for `RestfulRoute`.
 
 
 ##### new RestfulRegister($router)
 
 - $router **\Yaf\Router**
 
-Create a register on yaf `router`
+Create a register on yaf `router`.
 
 
 ##### register.get($url, $controller, $action), register.post($url, $controller, $action), etc...
@@ -51,6 +60,8 @@ Create a register on yaf `router`
 - $url **String**
 - $controller **String**: controller class name
 - $action **String**: method name of controller
+
+Restful API, quickly register controller/action on **yaf router** with specific **HTTP method**.
 
 
 ##### register.register($url, $controller, $action, $method)
@@ -60,7 +71,7 @@ Create a register on yaf `router`
 - $action **String**: method name of controller
 - $method **String**: HTTP method name
 
-Low level api
+Low level api.
 
 
 ##### Example
