@@ -7,7 +7,7 @@ class RestfulRegister {
     private $router;
     private $index = 0;
     private $prefix = '__REST_';
-    public function __construct($router) {
+    public function __construct(/*\Yaf\Router*/ $router) {
         $this->router = $router;
     }
 
