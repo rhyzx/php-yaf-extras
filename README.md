@@ -12,8 +12,10 @@ composer require "yaf/extras:*"
 
 ----
 
-#### Class: RestfulRoute
+### Class: RestfulRoute
 
+
+##### Example
 ```php
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
     function _initRoute(\Yaf\Dispatcher $dispatcher) {
@@ -32,26 +34,26 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
 ----
 
-#### Class: RestfulRegister
+### Class: RestfulRegister
 
 Convience API Wrapper for `RestfulRoute`
 
 
-###### new RestfulRegister($router)
+##### new RestfulRegister($router)
 
 - $router **\Yaf\Router**
 
 Create a register on yaf `router`
 
 
-###### register.get($url, $controller, $action), register.post($url, $controller, $action), etc...
+##### register.get($url, $controller, $action), register.post($url, $controller, $action), etc...
 
 - $url **String**
 - $controller **String**: controller class name
 - $action **String**: method name of controller
 
 
-#### register.register($url, $controller, $action, $method)
+##### register.register($url, $controller, $action, $method)
 
 - $url **String**
 - $controller **String**: controller class name
@@ -61,7 +63,7 @@ Create a register on yaf `router`
 Low level api
 
 
-#### example
+##### Example
 ```php
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
     function _initRoute(\Yaf\Dispatcher $dispatcher) {
