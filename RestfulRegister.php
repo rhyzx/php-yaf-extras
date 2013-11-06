@@ -12,23 +12,23 @@ class RestfulRegister {
     }
 
     public function get($path, $controller, $action) {
-        $this->register($path, $controller, $action, 'get');
+        $this->on('get', $path, $controller, $action);
     }
 
     public function post($path, $controller, $action) {
-        $this->register($path, $controller, $action, 'post');
+        $this->on('post', $path, $controller, $action);
     }
 
     public function put($path, $controller, $action) {
-        $this->register($path, $controller, $action, 'put');
+        $this->on('put', $path, $controller, $action);
     }
 
     public function delete($path, $controller, $action) {
-        $this->register($path, $controller, $action, 'delete');
+        $this->on('delete', $path, $controller, $action);
     }
 
     public function patch($path, $controller, $action) {
-        $this->register($path, $controller, $action, 'patch');
+        $this->on('patch', $path, $controller, $action);
     }
 
     // TODO other methods like options?
@@ -39,9 +39,8 @@ class RestfulRegister {
         $this->register($path, $controller, $action);
     }
 
-
     // low level api
-    public function register($path, $controller, $action, $method = null) {
+    public function on($method = null, $path, $controller, $action) {
         $this->router->addRoute( $this->prefix . $this->index++,
             new RestfulRoute($path, array('controller' => $controller, 'action' => $action, 'method' => $method))
         );
