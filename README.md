@@ -6,7 +6,7 @@
 Install via Composer
 
 ```sh
-composer require "yaf/extras:*"
+> composer require "yaf/extras:*"
 ```
 
 
@@ -64,12 +64,12 @@ Create a register on yaf `router`.
 Restful API, quickly register controller/action on **yaf router** with specific **HTTP method**.
 
 
-##### register.register($url, $controller, $action, $method)
+##### register.on($method, $url, $controller, $action)
 
+- $method **String**: HTTP method name
 - $url **String**
 - $controller **String**: controller class name
 - $action **String**: method name of controller
-- $method **String**: HTTP method name
 
 Low level api.
 
