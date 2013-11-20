@@ -14,7 +14,7 @@ Install via Composer
 
 ### Class: RESTfulRouter
 
-**RESTful** router, provide a quick way to register **RewriteRouter** on YAF with **HTTP method** adaptation(RESTful).
+**RESTful** router, provide a quick way to register **RewriteRoute** with **HTTP method** adaptation(RESTful).
 
 
 ##### new RESTfulRouter()
@@ -50,10 +50,10 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     // RESTful style
     function _initRESTfulRoute() {
         $router = new \Yaf\Extras\RESTfulRouter();
-        $router.on('post', 'cat', 'cat', 'create');
-        $router.on('get', 'cat/:id', 'cat', 'read');
-        $router.on('delete', 'cat/:id', 'cat', 'delete');
-        $router.on('get post', 'dog/:id', 'dog', 'yeah');
+        $router->on('post', 'cat', 'cat', 'create');
+        $router->on('get', 'cat/:id', 'cat', 'read');
+        $router->on('delete', 'cat/:id', 'cat', 'delete');
+        $router->on('get post', 'dog/:id', 'dog', 'yeah');
     }
 
 }
