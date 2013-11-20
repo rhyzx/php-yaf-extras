@@ -12,77 +12,49 @@ Install via Composer
 
 ----
 
-### Class: RestfulRoute
+### Class: RESTfulRouter
 
-Base Route Class, it is recommended to use `RestfulRegister` instead of this.
+**RESTful** router, provide a quick way to register **RewriteRouter** on YAF with **HTTP method** adaptation(RESTful).
 
 
-##### new RestfulRoute($url, $options)
+##### new RESTfulRouter()
+
+Create a router.
+
+
+##### $router->on($method, $url, $controller, $action)
+
+- $method **String**: HTTP method name, wildcard `*` supported.
 - $url **String**
-- $options **Array**
+- $controller **String**: controller class name
+- $action **String**: method name of controller
 
-The same as `\Yaf\Route\Rewrite` expect `method` option for **HTTP method** filter.
+**Tips**. you can register multi methods in single `on()`, use space to separate methods, eg. `$router->on('get post', 'user/:id', 'user', 'show')`
 
 
 ##### Example
 ```php
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
+    // default YAF style route registration
     function _initRoute(\Yaf\Dispatcher $dispatcher) {
         $router = $dispatcher->getRouter();
         
         // default yaf rewrite route
         $router->addRoute('dog', new \Yaf\Route\Rewrite('dog/:id', array('controller' => 'dog', 'action' => 'read')));
         $router->addRoute('dogadd', new \Yaf\Route\Rewrite('dog', array('controller' => 'dog', 'action' => 'create')));
+        $router->addRoute('dogdel', new \Yaf\Route\Rewrite('dog/:id/delete', array('controller' => 'dog', 'action' => 'delete')));
 
-        // restful route
-        $router->addRoute('cat', new \Yaf\Extras\RestfulRoute('cat/:id', array('controller' => 'cat', 'action' => 'read', method => 'get')));
-        $router->addRoute('catadd', new \Yaf\Extras\RestfulRoute('cat', array('controller' => 'cat', 'action' => 'create', method => 'post')));
+
     }
-}
-```
-
-----
-
-### Class: RestfulRegister
-
-Convience API Wrapper for `RestfulRoute`.
-
-
-##### new RestfulRegister($router)
-
-- $router **\Yaf\Router**
-
-Create a register on yaf `router`.
-
-
-##### register.get($url, $controller, $action), register.post($url, $controller, $action), etc...
-
-- $url **String**
-- $controller **String**: controller class name
-- $action **String**: method name of controller
-
-Restful API, quickly register controller/action on **yaf router** with specific **HTTP method**.
-
-
-##### register.on($method, $url, $controller, $action)
-
-- $method **String**: HTTP method name
-- $url **String**
-- $controller **String**: controller class name
-- $action **String**: method name of controller
-
-Low level api.
-
-
-##### Example
-```php
-class Bootstrap extends \Yaf\Bootstrap_Abstract {
-    function _initRoute(\Yaf\Dispatcher $dispatcher) {
-        $reg = new \Yaf\Extras\RestfulRegister($dispatcher->getRouter());
-
-        $reg.post('cat', 'cat', 'create');
-        $reg.get('cat/:id', 'cat', 'read');
-        $reg.delete('cat/:id', 'cat', 'delete');
+    
+    // RESTful style
+    function _initRESTfulRoute() {
+        $router = new \Yaf\Extras\RESTfulRouter();
+        $router.on('post', 'cat', 'cat', 'create');
+        $router.on('get', 'cat/:id', 'cat', 'read');
+        $router.on('delete', 'cat/:id', 'cat', 'delete');
+        $router.on('get post', 'dog/:id', 'dog', 'yeah');
     }
+
 }
 ```

@@ -1,23 +1,23 @@
 <?php
 
-namespace Yaf\Extras;
+namespace Yaf\Extras\lib;
 
 // RESTful Route
 // implementation by Compositing on RewriteRouter
-class RestfulRoute implements \Yaf\Route_Interface {
+class RESTfulRoute implements \Yaf\Route_Interface {
     private $route;
-    private $method;
+    private $method = '*'; // default any
 
     public function __construct($path, $options/*, $isRegex = false*/) {
-        if ( isset($options['method']) ) {
-            $this->method = $options['method'];
+        if ( is_string($options['method']) ) {
+            $this->method = strtolower( $options['method'] );
         }
         $this->route = new \Yaf\Route\Rewrite($path, $options);
     }
 
     public function route(/*\Yaf\Request_Abstract*/ $request) {
         // HTTP method adapt
-        if ( isset($this->method) ) {
+        if ( $this->method !== '*' ) {
             $method = strtolower( $request->getMethod() );
 
             // fallback method
@@ -25,10 +25,12 @@ class RestfulRoute implements \Yaf\Route_Interface {
                 $method = strtolower( $_POST['_method'] );
             }
 
-            if ( $method !== strtolower($this->method) ) {
+            if ( $method !== $this->method ) {
                 return false;
             }
         }
+
+        // url adapt
         return $this->route->route($request);
     }
 }
