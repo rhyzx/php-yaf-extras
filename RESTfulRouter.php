@@ -25,7 +25,7 @@ class RESTfulRouter {
 
     private function register($method, $path, $controller, $action) {
         $this->router->addRoute( $this->prefix . $this->index++,
-            new lib\RESTfulRoute($path, array(
+            new Lib\RESTfulRoute($path, array(
                 'controller' => $controller
               , 'action' => $action
               , 'method' => $method

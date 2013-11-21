@@ -1,6 +1,6 @@
 <?php
 
-namespace Yaf\Extras\lib;
+namespace Yaf\Extras\Lib;
 
 // RESTful Route
 // implementation by Compositing on RewriteRouter
