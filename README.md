@@ -71,7 +71,9 @@ Render with different way(renderer) according to view file's extension name.
 Use default `Yaf Simple View` as fallback if no renderer matched.
 
 
-##### $view = new AdaptiveView
+##### $view = new AdaptiveView($path = '{yaf.application.directory}/views/')
+
+- $path **String**: path of view files located, default is '{yaf.application.directory}/views/'
 
 Create a view.
 
