@@ -34,7 +34,6 @@ Create a router.
 
 ##### Example
 ```php
-<?php
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
     // default YAF style route registration
     function _initRoute(\Yaf\Dispatcher $dispatcher) {
@@ -61,6 +60,31 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 }
 ```
 
+##### Strict Mode
+
+`new RESTfulRouter(true)` to open strict mode.
+
+In this mode, uri will matches **strictly** and new `<name>` style syntax was introduced.
+
+eg.
+`'/user/<name>'` will match `'/user/micheal'`, but not match `'/user/micheal/age'`, also not match `'/user/micheal/'`.
+
+
+Type filter supported by `<name:filter>`.
+
+Current filters
+
+- int : pure number
+
+eg.
+`'/user/<id:int>'` will match `'/user/123`, but not match `'/user/micheal'`.
+
+
+Because it base on `YAF\Route\Regex`, some regex can be used.
+And currently you can't use `'()'`, it will cause error.
+
+eg.
+`'/blog/?'` will match `'/blog'` or `'/blog/'`.
 
 
 ----
@@ -94,7 +118,6 @@ Other common methods see [Yaf/View/Interface](http://www.php.net/manual/en/class
 #### Example
 `Bootstrap.php`
 ```php
-<?php
 class Bootstrap extends \Yaf\Bootstrap_Abstract {
     function _initView(\Yaf\Dispatcher $dispatcher) {
         $view = new \Yaf\Extras\AdaptiveView;
@@ -120,8 +143,6 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
 Now you can use this view in `YourController.php`
 ```php
-<?php
-
 class TestController extends \Yaf\Controller_Abstract {
     public function testAction() {
         $view = $this->getView();
