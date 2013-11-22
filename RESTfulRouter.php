@@ -4,11 +4,13 @@ namespace Yaf\Extras;
 
 // RESTful Route API Wrapper
 class RESTfulRouter {
+    private $strict;
     private $router;
     private $index = 0;
     private $prefix = '__REST_';
-    public function __construct() {
+    public function __construct($strict = false) {
         $this->router = \Yaf\Dispatcher::getInstance()->getRouter();
+        $this->strict = $strict;
     }
 
     public function on($method, $path, $controller, $action) {
@@ -29,7 +31,7 @@ class RESTfulRouter {
                 'controller' => $controller
               , 'action' => $action
               , 'method' => $method
-            ))
+            ), $this->strict)
         );
     }
 }
