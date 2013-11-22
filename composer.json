@@ -2,7 +2,7 @@
     "name": "yaf/extras",
     "type": "library",
     "description": "Extras package for the Yet Another Framework",
-    "keywords": ["yaf", "restful","extensions"],
+    "keywords": ["yaf", "restful", "extensions", "view", "twig"],
     "homepage": "http://github.com/rhyzx/php-yaf-extras",
     "license": "MIT",
     "authors": [
