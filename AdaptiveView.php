@@ -27,7 +27,7 @@ class AdaptiveView implements \Yaf\View_Interface {
         $extname = strtolower( pathinfo($file, PATHINFO_EXTENSION) );
 
         if ( isset($this->renderers[$extname]) ) {
-            return $this->renderers[$extname]($file, $this->data);
+            return call_user_func($this->renderers[$extname], $file, $this->data);
         } else {
             return $this->renderDefault($file, $this->data);
         }
@@ -51,9 +51,17 @@ class AdaptiveView implements \Yaf\View_Interface {
 
 
     // renderer registration
+    // $renderder is a callable object
+    // so it can be a function or a array(object, methodName)
+    // see http://www.php.net/manual/en/function.is-callable.php
     public function on($extname, $renderer) {
         $extname = strtolower($extname);
-        $this->renderers[$extname] = $renderer;
+
+        if ( is_callable($renderer) ) {
+            $this->renderers[$extname] = $renderer;
+        } else {
+            throw new Exception('renderer is not callable');
+        }
     }
 
     private function renderDefault($file, $data) {
