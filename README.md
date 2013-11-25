@@ -146,7 +146,7 @@ Now you can use this view in `YourController.php`
 class TestController extends \Yaf\Controller_Abstract {
     public function testAction() {
         $view = $this->getView();
-        $view->assign("content", "Hello World"); 
+        $view->assign('content', 'Hello World'); 
         $view->display('text.txt');
         // $view->display('text.twig'); // render use twig
     }
