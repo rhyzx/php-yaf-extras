@@ -40,9 +40,10 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         $router = $dispatcher->getRouter();
         
         // default yaf rewrite route
-        $router->addRoute('dog', new \Yaf\Route\Rewrite('dog/:id', array('controller' => 'dog', 'action' => 'read')));
-        $router->addRoute('dogadd', new \Yaf\Route\Rewrite('dog', array('controller' => 'dog', 'action' => 'create')));
-        $router->addRoute('dogdel', new \Yaf\Route\Rewrite('dog/:id/delete', array('controller' => 'dog', 'action' => 'delete')));
+        $router->addRoute('dog', new \Yaf\Route\Rewrite('dogs', array('controller' => 'dog', 'action' => 'index')));
+        $router->addRoute('dog_show', new \Yaf\Route\Rewrite('dogs/:id', array('controller' => 'dog', 'action' => 'show')));
+        $router->addRoute('dog_create', new \Yaf\Route\Rewrite('dogs/create', array('controller' => 'dog', 'action' => 'create')));
+        $router->addRoute('dog_destroy', new \Yaf\Route\Rewrite('dogs/:id/delete', array('controller' => 'dog', 'action' => 'destroy')));
     }
 
     
@@ -50,12 +51,12 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     function _initRESTfulRoute() {
         $router = new \Yaf\Extras\RESTfulRouter;
         $router->on('post', 'cat', 'cat', 'create');
-        $router->on('get', 'cat/:id', 'cat', 'read');
-        $router->on('delete', 'cat/:id', 'cat', 'delete');
+        $router->on('get', 'cat/:id', 'cat', 'show');
+        $router->on('delete', 'cat/:id', 'cat', 'destroy');
         
-        $router->on('get post', 'dog/:id', 'dog', 'yeah');
+        $router->on('put patch', 'cat/:id', 'cat', 'update');
 
-        $router->on('*', 'pig/:id', 'pig', 'eat');
+        $router->on('*', 'pig/:id', 'pig', 'what');
     }
 }
 ```
