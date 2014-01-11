@@ -30,10 +30,9 @@ class ExtendedController extends \Yaf\Controller_Abstract {
 
 
     // json responser
-    // public function echoJson($state, $msg, $data = array()) {
     public function echoJson($data = array()) {
         // echo json_encode(array('state' => $state, 'msg' => $msg, 'data' => $data));
-        header('Content-Type', 'application/json');
+        header('Content-Type: application/json');
         echo json_encode($data); // write to Response?
     }
 
