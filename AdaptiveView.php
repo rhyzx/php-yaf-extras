@@ -1,6 +1,11 @@
 <?php
 
 namespace Yaf\Extras;
+# TODO
+# enable autorender
+# - auto replace extension in autorender, yaf will input `template.phtml`
+# - default extension setting, like use `html.twig`
+# * returned data from controller will not pass to render(), yaf sucks
 
 // Register custom renderer according to file's extension name
 // use default Yaf Simple View as fallback if no renderer matched

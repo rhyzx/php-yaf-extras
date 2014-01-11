@@ -36,9 +36,9 @@ class ExtendedController extends \Yaf\Controller_Abstract {
         echo json_encode($data); // write to Response?
     }
 
-    // public function isAJAX() {
-        // TODO
-    // }
+    public function isAJAX() {
+        return $this->getRequest()->isXmlHttpRequest();
+    }
 
     // lookup param from uri-param -> post -> get
     public function getParam($name, $default = '') {
@@ -64,5 +64,7 @@ class ExtendedController extends \Yaf\Controller_Abstract {
     // getSession?
 
     // flash
+
+    // $_SERVER['HTTP_REFERER']
 }
 
