@@ -13,20 +13,19 @@ class ExtendedController extends \Yaf\Controller_Abstract {
 
     // View functions
     // overwrite render
-    public function render($file, $data = null) {
+    public function render($file, array $data = null) {
         return $this->getView()->render($file, $data);
     }
 
     // overwrite display
-    public function display($file, $data = null) {
+    public function display($file, array $data = null) {
         return $this->getView()->display($file, $data);
     }
 
     // bridge to view
-    public function assign($name, $value = null) {
+    public function assign($name, array $value = null) {
         return $this->getView()->assign($name, $value);
     }
-
 
 
     // json responser
