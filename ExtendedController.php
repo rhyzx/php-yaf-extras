@@ -63,6 +63,15 @@ class ExtendedController extends \Yaf\Controller_Abstract {
     // getSession?
 
     // flash
+    public function flash($msg, $type = 'info') {
+        Lib\Flash::getInstance()->next(array('msg' => $msg, 'type' => $type));
+    }
+    public function flashNow($msg, $type = 'info') {
+        Lib\Flash::getInstance()->now(array('msg' => $msg, 'type' => $type));
+    }
+    public function getFlash() {
+        return Lib\Flash::getInstance();
+    }
 
     // $_SERVER['HTTP_REFERER']
 }
