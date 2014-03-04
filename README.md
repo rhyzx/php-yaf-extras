@@ -153,3 +153,42 @@ class TestController extends \Yaf\Controller_Abstract {
     }
 }
 ```
+
+
+----
+
+### Class: ExtendedController
+
+Common controller base on `\Yaf\Controller_Abstract` with many useful methods;
+
+
+#### flash
+Flash messaging
+
+##### $this->flash($msg, $type = 'info')
+Store message for next request
+
+##### $this->flashNow($msg, $type = 'info')
+For current request
+
+##### $this->getFlash()
+
+Retrieve message for current request
+
+
+
+###### example
+```php
+class FooController extends ExtendedController {
+    public function indexAction() {
+        $this->flash('yep', 'success');
+        $this->flashNow('nope', 'error');
+
+        foreach ($this->getFlash() as $flash) {
+            echo $flash['msg']; // 'nope' in current, 'yep' for next
+            echo $flash['type'];
+        }
+    }
+}
+```
+
