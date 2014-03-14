@@ -59,4 +59,9 @@ class RESTfulRoute implements \Yaf\Route_Interface {
         // url adapt
         return $this->route->route($request);
     }
+
+    
+    public function assemble(array $mvc, array $query = NULL) {
+        // interface method
+    }
 }
