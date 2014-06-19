@@ -103,6 +103,6 @@ class Flash implements \ArrayAccess, \IteratorAggregate, \Countable {
      */
     public function count()
     {
-        return count($this->flashes());
+        return count($this->flashes);
     }
 }
